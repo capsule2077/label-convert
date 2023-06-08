@@ -31,8 +31,7 @@ yolo格式的数据应该如下：
 ```
 其中class.txt文件包含所有类别，按序一行一个类别。  
 ROOT_PATH下的images和labels文件夹分别存放训练集和验证集的图片和标签，图片和标签的文件名应该一一对应。  
-图片格式 
-
+图片格式可以是jpg、png等。
 labels文件夹下的txt文件格式如下：
 ```
 class_id x_center y_center width height
