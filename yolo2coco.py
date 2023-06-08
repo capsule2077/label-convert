@@ -1,8 +1,10 @@
-import cv2
-import shutil
 import json
+import shutil
 from pathlib import Path
+import cv2
 from tqdm import tqdm
+
+
 # 如果使用jupyter notebook则以下方式导入tqdm
 # from tqdm.notebook import tqdm
 
@@ -30,6 +32,7 @@ def move_images(origin_images_dir, filename, path):
     dst.joinpath(filename)
     shutil.move(origin_images_dir, dst)
 
+
 # 参考 https://github.com/Weifeng-Chen/dl_scripts/blob/main/detection/yolo2coco.py
 def yolo2coco(dir_list, classes):
     for path in dir_list:
@@ -42,14 +45,13 @@ def yolo2coco(dir_list, classes):
         id_count = 0
         bar = tqdm(indexes, unit=" images ")
         for k, index in enumerate(bar):
-            info = f" { k + 1} / {  len(indexes) }"
+            info = f" {k + 1} / {len(indexes)}"
             bar.desc = info
 
             filename = index.name
             label_filename = Path(index.name).with_suffix(".txt")
             origin_labels_dir = path[1].joinpath(label_filename)
             origin_images_dir = path[0].joinpath(index)
-
 
             img = cv2.imread(origin_images_dir.as_posix())
             image_height, image_width, _ = img.shape
@@ -103,13 +105,11 @@ def yolo2coco(dir_list, classes):
         print("Move images of {}_dataset successfully!".format(path[0].name))
 
 
-
 if __name__ == "__main__":
     # yolo格式数据根目录
     root_dir = Path("G:\yolo_dataset")
     # 自动区分是否有训练/验证/测试集
     # 所以一般无需更改type_list
-    type_list = [ "train", "val", "test"]
+    type_list = ["train", "val", "test"]
     dir_list, classes = get_datasets_path(root_dir)
     yolo2coco(dir_list, classes)
-
