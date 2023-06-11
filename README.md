@@ -38,3 +38,4 @@ class_id x_center y_center width height
 ```
 其中class_id是类别id，从0开始；x_center和y_center是目标中心点相对于图片宽高的比例；width和height是目标的宽高相对于图片宽高的比例。  
 最后返回annotations文件夹，里面包含train.json和val.json两个文件，分别是训练集和验证集的标注文件。
+# 2.VOC2COCO
