@@ -37,3 +37,5 @@ labels文件夹下的txt文件格式如下：
 class_id x_center y_center width height
 ```
 其中class_id是类别id，从0开始；x_center和y_center是目标中心点相对于图片宽高的比例；width和height是目标的宽高相对于图片宽高的比例。
+
+# 2.VOC2COCO
